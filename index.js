@@ -34,7 +34,7 @@ const SimpleToast = {
     gravity,
     xOffset,
     yOffset,
-  ) => {
+  ) {
     RCTToastAndroid.showWithGravityAndOffset(
       message,
       duration === undefined ? this.SHORT : duration,
