@@ -106,5 +106,9 @@ RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration grav
     });
 }
 
-@end
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
 
+@end
