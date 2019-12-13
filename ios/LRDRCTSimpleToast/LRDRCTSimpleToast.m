@@ -10,7 +10,7 @@
 #import "UIView+Toast.h"
 
 NSInteger const LRDRCTSimpleToastBottomOffset = 40;
-double const LRDRCTSimpleToastShortDuration = 3.0;
+double const LRDRCTSimpleToastShortDuration = 2;
 double const LRDRCTSimpleToastLongDuration = 5.0;
 NSInteger const LRDRCTSimpleToastGravityBottom = 1;
 NSInteger const LRDRCTSimpleToastGravityCenter = 2;
@@ -65,15 +65,16 @@ RCT_EXPORT_MODULE()
              };
 }
 
-RCT_EXPORT_METHOD(show:(NSString *)msg duration:(double)duration {
-    [self _show:msg duration:duration gravity:LRDRCTSimpleToastGravityBottom];
+RCT_EXPORT_METHOD(show:(NSString *)msg duration:(double)duration gravity:(nonnull NSNumber *)gravity customStyle:(NSDictionary *)customStyle  {
+    [self _show:msg duration:duration gravity:gravity.intValue customStyle:customStyle];
 });
 
-RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration gravity:(nonnull NSNumber *)gravity{
-    [self _show:msg duration:duration gravity:gravity.intValue];
-});
+//RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration gravity:(nonnull NSNumber *)gravity{
+//    [self _show:msg duration:duration gravity:gravity.intValue];
+//});
 
-- (void)_show:(NSString *)msg duration:(NSTimeInterval)duration gravity:(NSInteger)gravity {
+- (void)_show:(NSString *)msg duration:(NSTimeInterval)duration gravity:(NSInteger)gravity 
+    customStyle:(NSDictionary *)customStyle {
     dispatch_async(dispatch_get_main_queue(), ^{
         UIView *root = [[[[[UIApplication sharedApplication] delegate] window] rootViewController] view];
         CGRect bound = root.bounds;
@@ -97,6 +98,7 @@ RCT_EXPORT_METHOD(showWithGravity:(NSString *)msg duration:(double)duration grav
         [view makeToast:msg
             duration:duration
             position:position
+            customStyle:customStyle
             title:nil
             image:nil
             style:nil
