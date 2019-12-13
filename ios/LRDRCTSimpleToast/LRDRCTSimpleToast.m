@@ -11,7 +11,7 @@
 
 NSInteger const LRDRCTSimpleToastBottomOffset = 40;
 double const LRDRCTSimpleToastShortDuration = 2;
-double const LRDRCTSimpleToastLongDuration = 5.0;
+double const LRDRCTSimpleToastLongDuration = 4.0;
 NSInteger const LRDRCTSimpleToastGravityBottom = 1;
 NSInteger const LRDRCTSimpleToastGravityCenter = 2;
 NSInteger const LRDRCTSimpleToastGravityTop = 3;
