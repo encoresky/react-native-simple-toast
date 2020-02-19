@@ -58,7 +58,7 @@ public class Toast extends ReactContextBaseJavaModule implements LifecycleEventL
                 View view = toast.getView();
                 view.setBackgroundResource(R.drawable.custom_toast);
                 view.getBackground().setColorFilter(Color.parseColor(backgroundColor), PorterDuff.Mode.SRC_ATOP);
-                TextView text = view.findViewById(android.R.id.message);
+                TextView text = (TextView) view.findViewById(android.R.id.message);
                 text.setTextSize(fontSize);
                 text.setTextColor(Color.parseColor(color));
                 if (fontWeight.equals("bold")) {
